@@ -6,7 +6,6 @@
 @TIME       :   2020/11/25 19:25
 """
 import numpy as np
-import csv
 import os
 import random
 import logging
@@ -99,10 +98,13 @@ class Mnist():
 
         #If need transfer Array to Image
         if ToPicture == True:
-            Image.fromarray(Train_Data_Selected).save('{}_{}.png'.format())
-            Image.fromarray(Test_Data_Selected).save('{}_{}.png'.format())
+            Train_Data_Image = np.reshape(Train_Data_Selected, newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
+            Test_Data_Image = np.reshape(Test_Data_Selected, newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
+            #Using class Image to implement tranformation from array to image
+            Image.fromarray(Train_Data_Image).save('{}_{}.png'.format("TrainData", Random_Train_Index))
+            Image.fromarray(Test_Data_Image).save('{}_{}.png'.format("TestData", Random_Test_Index))
 
 if __name__ == "__main__":
     tm = Mnist()
     tm.GetFileLength()
-    tm.CheckRandomData()
+    tm.CheckRandomData(True)
