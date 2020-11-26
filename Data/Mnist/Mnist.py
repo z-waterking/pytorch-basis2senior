@@ -10,7 +10,7 @@ import os
 import random
 import logging
 from PIL import Image
-#设置logging级别为debug
+#Set loggging level to logging.DEBUG
 logging.basicConfig(level=logging.DEBUG)
 
 class Mnist():
@@ -45,15 +45,31 @@ class Mnist():
         logging.info("Please call * GetFileLength() * method to get the length of datas")
 
     def GetAllTrainData(self):
+        '''
+        Return all Train_Data
+        :return: list[numpy.array()]
+        '''
         return self.Train_Data
 
     def GetAllTrainLabel(self):
+        '''
+        Return all Train_Label
+        :return: list[]
+        '''
         return self.Train_Label
 
     def GetAllTestData(self):
+        '''
+        Return all Test_Data
+        :return:list[np.array()]
+        '''
         return self.Test_Data
 
     def GetAllTestLabel(self):
+        '''
+        Return all Test_Label
+        :return:list[]
+        '''
         return self.Test_Label
 
     def GetFileLength(self):
