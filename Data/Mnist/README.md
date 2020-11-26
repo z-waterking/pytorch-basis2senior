@@ -1,5 +1,5 @@
-# MINST
-## MINST相关地址
+# MINST-纯分类数据-(数值向量，标签)
+## MINST相关信息
 1. 地址：http://yann.lecun.com/exdb/mnist/
 
     a. 原版四个文件本地大小：

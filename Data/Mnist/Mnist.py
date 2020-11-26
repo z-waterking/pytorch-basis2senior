@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-#
 """
 @Project    :   DeepLearning
-@File       :   Mnist.py
+@File       :   Criteo.py
 @USER       :   ZZZZZ
 @TIME       :   2020/11/25 19:25
 """
+from Data.DataAcquisition import DataAcquisition
 import numpy as np
 import os
 import random
@@ -13,7 +14,7 @@ from PIL import Image
 #Set loggging level to logging.DEBUG
 logging.basicConfig(level=logging.DEBUG)
 
-class Mnist():
+class Mnist(DataAcquisition):
     def __init__(self):
         '''
         Open All Files and Read All Datas
@@ -100,15 +101,15 @@ class Mnist():
         #Check Train Data And Test Data
         print('The Selected Train Data Index is {}, train data is as follows:'.format(Random_Train_Index))
         for index, value in enumerate(Train_Data_Selected):
-            print(value, end = '  ')
-            if index != 0 and  index % self.Data_Shape_Length == 0:
+            print(value, end = '\t')
+            if index != 0 and index % self.Data_Shape_Length == 0:
                 print()
         print('\nThe Train Label is {}'.format(Train_Label_Selected))
 
         print('The Selected Test Data Index is {}, test data is as follows:'.format(Random_Test_Index))
         for index, value in enumerate(Test_Data_Selected):
-            print(value, end='  ')
-            if index != 0 and  index % self.Data_Shape_Length == 0:
+            print(value, end='\t')
+            if index != 0 and index % self.Data_Shape_Length == 0:
                 print()
         print('\nThe Test Label is {}'.format(Test_Label_Selected))
 
@@ -116,6 +117,7 @@ class Mnist():
         if ToPicture == True:
             Train_Data_Image = np.reshape(Train_Data_Selected, newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
             Test_Data_Image = np.reshape(Test_Data_Selected, newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
+
             #Using class Image to implement tranformation from array to image
             Image.fromarray(Train_Data_Image).save('{}_{}.png'.format("TrainData", Random_Train_Index))
             Image.fromarray(Test_Data_Image).save('{}_{}.png'.format("TestData", Random_Test_Index))
@@ -124,3 +126,4 @@ if __name__ == "__main__":
     tm = Mnist()
     tm.GetFileLength()
     tm.CheckRandomData(True)
+    print(tm.Train_Data[-1])
