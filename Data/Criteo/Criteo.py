@@ -39,11 +39,11 @@ class Criteo(DataAcquisition):
         #Please read the original datas or README.md to understand the process.
         self.Train_Data = self.Train_Data_File.values.tolist()
         #Get the Train Label's First Column's value
-        self.Train_Label = self.Train_Label_File[0].values.tolist()
+        self.Train_Label = self.Train_Label_File.iloc[:, 0].values.tolist()
 
         self.Test_Data = self.Test_Data_File.values.tolist()
         # Get the Test Label's First Column's value
-        self.Test_Label = self.Test_Label_File[0].values.tolist()
+        self.Test_Label = self.Test_Label_File.iloc[:, 0].values.tolist()
 
         #Notation
         logging.info("Please call * GetFileLength() * method to get the length of datas")
@@ -106,7 +106,7 @@ class Criteo(DataAcquisition):
         print('The Train Data is {}'.format(Train_Data_Selected))
         print('The Train Label is {}'.format(Train_Label_Selected))
 
-        print('The Selected Test Data Index is {}, test data is as follows:'.format(Random_Test_Index))
+        print('The Selected Test Data Index is {}'.format(Random_Test_Index))
         print('The Test Data is {}'.format(Test_Data_Selected))
         print('The Test Label is {}'.format(Test_Label_Selected))
 
