@@ -20,10 +20,10 @@ class Mnist(DataAcquisition):
         Open All Files and Read All Datas
         '''
         #FileNames
-        self.Train_Data_FileName = "MNIST_Train_Data.csv"
-        self.Train_Label_FileName = "MNIST_Train_Label.csv"
-        self.Test_Data_FileName = "MNIST_Test_Data.csv"
-        self.Test_Label_FileName = "MNIST_Test_Label.csv"
+        self.Train_Data_FileName = "Mnist_Train_Data.csv"
+        self.Train_Label_FileName = "Mnist_Train_Label.csv"
+        self.Test_Data_FileName = "Mnist_Test_Data.csv"
+        self.Test_Label_FileName = "Mnist_Test_Label.csv"
 
         #File Objects
         self.Train_Data_File = open(self.Train_Data_FileName, 'r', encoding = 'utf-8')

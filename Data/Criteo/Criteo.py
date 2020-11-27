@@ -3,7 +3,7 @@
 @Project    :   DeepLearning
 @File       :   Criteo.py
 @USER       :   ZZZZZ
-@TIME       :   2020/11/25 19:25
+@TIME       :   2020/11/26 19:25
 """
 from Data.DataAcquisition import DataAcquisition
 import random
@@ -18,15 +18,14 @@ class Criteo(DataAcquisition):
         Open All Files and Read All Datas
         '''
         #FileNames
-        self.Train_Data_FileName = "CRITEO_Train_Data.csv"
-        self.Train_Label_FileName = "CRITEO_Train_Label.csv"
-        self.Test_Data_FileName = "CRITEO_Test_Data.csv"
-        self.Test_Label_FileName = "CRITEO_Test_Label.csv"
+        self.Train_Data_FileName = "Criteo_Train_Data.csv"
+        self.Train_Label_FileName = "Criteo_Train_Label.csv"
+        self.Test_Data_FileName = "Criteo_Test_Data.csv"
+        self.Test_Label_FileName = "Criteo_Test_Label.csv"
 
         #Data Columns
-        self.DataNumColumns = ['i1', 'i2', 'i3', 'i4', 'i5', 'i6', 'i7', 'i8', 'i9', 'i10', 'i11', 'i12', 'i13']
-        self.DataCateColumns = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10', 'c11', 'c12', 'c13',
-                                'c14', 'c15', 'c16', 'c17', 'c18', 'c19', 'c20', 'c21', 'c22', 'c23', 'c24', 'c25', 'c26']
+        self.DataNumColumns = ['i{}'.format(index) for index in range(1, 14)]
+        self.DataCateColumns = ['c{}'.format(index) for index in range(1, 27)]
         self.DataColumns = self.DataNumColumns + self.DataCateColumns
 
         #File Objects
@@ -37,6 +36,7 @@ class Criteo(DataAcquisition):
 
         #File Datas
         #Please read the original datas or README.md to understand the process.
+
         self.Train_Data = self.Train_Data_File.values.tolist()
         #Get the Train Label's First Column's value
         self.Train_Label = self.Train_Label_File.iloc[:, 0].values.tolist()
@@ -111,6 +111,6 @@ class Criteo(DataAcquisition):
         print('The Test Label is {}'.format(Test_Label_Selected))
 
 if __name__ == "__main__":
-    tm = Criteo()
-    tm.GetFileLength()
-    tm.CheckRandomData()
+    co = Criteo()
+    co.GetFileLength()
+    co.CheckRandomData()

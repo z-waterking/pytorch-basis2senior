@@ -1,4 +1,4 @@
-# MINST-纯分类数据-(数值向量，标签)
+# MINST-纯分类数据-(nums) : label
 ## MINST相关信息
 1. 地址：http://yann.lecun.com/exdb/mnist/
 
