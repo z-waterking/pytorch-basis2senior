@@ -11,7 +11,7 @@ import pandas as pd
 import os
 import random
 import logging
-from PIL import Image
+import matplotlib.pyplot as plt
 #Set loggging level to logging.DEBUG
 logging.basicConfig(level=logging.DEBUG)
 
@@ -20,21 +20,25 @@ class Mnist(DataAcquisition):
         '''
         Open All Files and Read All Datas
         '''
+        '''
+            Using Current path to make these data files can be visited by other .py
+        '''
+        self.Current_Path = os.path.dirname(__file__)
+        logging.debug('Data Path: {}'.format(self.Current_Path))
         #FileNames
-        self.Train_Data_FileName = "Mnist_Train_Data.csv"
-        self.Train_Label_FileName = "Mnist_Train_Label.csv"
-        self.Test_Data_FileName = "Mnist_Test_Data.csv"
-        self.Test_Label_FileName = "Mnist_Test_Label.csv"
+        self.Train_Data_FileName = os.path.join(self.Current_Path, "Mnist_Train_Data.csv")
+        self.Train_Label_FileName = os.path.join(self.Current_Path, "Mnist_Train_Label.csv")
+        self.Test_Data_FileName = os.path.join(self.Current_Path, "Mnist_Test_Data.csv")
+        self.Test_Label_FileName = os.path.join(self.Current_Path, "Mnist_Test_Label.csv")
 
         #File Objects
-        self.Train_Data_File = pd.read_csv(self.Train_Data_FileName, sep=',')
-        self.Train_Label_File = pd.read_csv(self.Train_Label_FileName)
-        self.Test_Data_File = pd.read_csv(self.Test_Data_FileName, sep=',')
-        self.Test_Label_File = pd.read_csv(self.Test_Label_FileName)
+        self.Train_Data_File = pd.read_csv(self.Train_Data_FileName, sep=',', header = None)
+        self.Train_Label_File = pd.read_csv(self.Train_Label_FileName, header = None)
+        self.Test_Data_File = pd.read_csv(self.Test_Data_FileName, sep=',', header = None)
+        self.Test_Label_File = pd.read_csv(self.Test_Label_FileName, header = None)
 
         #File Datas
         #Please read the original datas or README.md to understand the process.
-        LabelBase = [0] * 10
         self.Train_Data = self.Train_Data_File.values.tolist()
         self.Train_Label = self.Train_Label_File.values.tolist()
         self.Test_Data = self.Test_Data_File.values.tolist()
@@ -85,14 +89,21 @@ class Mnist(DataAcquisition):
         logging.info('The Length of {} is {}'.format(self.Test_Data_FileName, len(self.Test_Data)))
         logging.info('The Length of {} is {}'.format(self.Test_Label_FileName, len(self.Test_Label)))
 
-    def CheckRandomData(self, ToPicture = False):
+    def CheckRandomData(self, AssignedIndex = None, ToPicture = False):
         '''
         Select one train data and one test data to check if they are true
+        :param AssignedIndex: check given index's data
+        :param ToPicture: if need picture or not
         :return:
         '''
+
         #Select a random index respectively
         Random_Train_Index = random.randint(0, len(self.Train_Label))
         Random_Test_Index = random.randint(0, len(self.Test_Label))
+
+        if AssignedIndex != None:
+            Random_Train_Index = AssignedIndex
+            Random_Test_Index = AssignedIndex
 
         #Select relevant datas
         Train_Data_Selected = self.Train_Data[Random_Train_Index]
@@ -117,14 +128,14 @@ class Mnist(DataAcquisition):
 
         #If need transfer Array to Image
         if ToPicture == True:
-            Train_Data_Image = np.reshape(Train_Data_Selected, newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
-            Test_Data_Image = np.reshape(Test_Data_Selected, newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
+            Train_Data_Image = np.reshape(np.array(Train_Data_Selected), newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
+            Test_Data_Image = np.reshape(np.array(Test_Data_Selected), newshape = (self.Data_Shape_Length, self.Data_Shape_Wide))
 
             #Using class Image to implement tranformation from array to image
-            Image.fromarray(Train_Data_Image).save('{}_{}.png'.format("TrainData", Random_Train_Index))
-            Image.fromarray(Test_Data_Image).save('{}_{}.png'.format("TestData", Random_Test_Index))
+            plt.imsave(self.Current_Path + '/{}_{}.jpg'.format("TrainData", Random_Train_Index), Train_Data_Image)
+            plt.imsave(self.Current_Path + '/{}_{}.jpg'.format("TestData", Random_Test_Index), Test_Data_Image)
 
 if __name__ == "__main__":
     mt = Mnist()
     mt.DescribeDataLength()
-    mt.CheckRandomData(False)
+    mt.CheckRandomData(ToPicture=False)

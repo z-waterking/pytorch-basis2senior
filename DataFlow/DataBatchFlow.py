@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-#
 '''
 @Project    :   DeepLearning
-@File       :   DataFlow.py
+@File       :   DataBatchFlow.py
 @USER       :   ZZZZZ
 @TIME       :   2020/11/28 14:30
 '''
@@ -10,7 +10,7 @@ import random
 from Data import *
 logging.basicConfig(level=logging.DEBUG)
 
-class DataFlow():
+class DataBatchFlow():
     def __init__(self, DataSource):
         '''
         Get Datas from DataSource By Different Ways.
@@ -115,7 +115,7 @@ class DataFlow():
 if __name__ == "__main__":
     #Construct DataAcquisition Object First
     mt = Mnist()
-    df = DataFlow(mt)
+    df = DataBatchFlow(mt)
 
     #Transfer DataAcquisition Object as parameter
     # dg = df.GetTrainLabelBatch()

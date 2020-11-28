@@ -8,6 +8,7 @@
 from Data.DataAcquisition import DataAcquisition
 import random
 import logging
+import os
 import pandas as pd
 #Set loggging level to logging.DEBUG
 logging.basicConfig(level=logging.DEBUG)
@@ -18,10 +19,17 @@ class Criteo(DataAcquisition):
         Open All Files and Read All Datas
         '''
         #FileNames
-        self.Train_Data_FileName = "Criteo_Train_Data.csv"
-        self.Train_Label_FileName = "Criteo_Train_Label.csv"
-        self.Test_Data_FileName = "Criteo_Test_Data.csv"
-        self.Test_Label_FileName = "Criteo_Test_Label.csv"
+        '''
+            Using Current path to make these data files can be visited by other .py
+        '''
+        self.Current_Path = os.path.dirname(__file__)
+        logging.debug('Data Path: {}'.format(self.Current_Path))
+
+        # FileNames
+        self.Train_Data_FileName = os.path.join(self.Current_Path, "Criteo_Train_Data.csv")
+        self.Train_Label_FileName = os.path.join(self.Current_Path, "Criteo_Train_Label.csv")
+        self.Test_Data_FileName = os.path.join(self.Current_Path, "Criteo_Test_Data.csv")
+        self.Test_Label_FileName = os.path.join(self.Current_Path, "Criteo_Test_Label.csv")
 
         #Data Columns
         self.DataNumColumns = ['i{}'.format(index) for index in range(1, 14)]
@@ -29,10 +37,10 @@ class Criteo(DataAcquisition):
         self.DataColumns = self.DataNumColumns + self.DataCateColumns
 
         #File Objects
-        self.Train_Data_File = pd.read_csv(self.Train_Data_FileName, sep = ',')
-        self.Train_Label_File = pd.read_csv(self.Train_Label_FileName)
-        self.Test_Data_File = pd.read_csv(self.Test_Data_FileName, sep = ',')
-        self.Test_Label_File = pd.read_csv(self.Test_Label_FileName)
+        self.Train_Data_File = pd.read_csv(self.Train_Data_FileName, sep = ',', header = None)
+        self.Train_Label_File = pd.read_csv(self.Train_Label_FileName, header = None)
+        self.Test_Data_File = pd.read_csv(self.Test_Data_FileName, sep = ',', header = None)
+        self.Test_Label_File = pd.read_csv(self.Test_Label_FileName, header = None)
 
         #File Datas
         #Please read the original datas or README.md to understand the process.

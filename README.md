@@ -3,7 +3,7 @@
 
 ## 说明
 
-本代码库所用的python版本为anaconda包中地3.6
+本代码库所用的python版本为anaconda包中的3.6
 pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
 
 ## 什么是好代码？
@@ -82,6 +82,15 @@ pass
 
 1. python生成器：https://www.cnblogs.com/liangmingshen/p/9706181.html
 2. yield用法：https://blog.csdn.net/mieleizhi0522/article/details/82142856
+4. 解决python模块调用时代码中使用相对路径访问的文件，提示文件不存在的问题:https://blog.csdn.net/cxx654/article/details/79371565
 ```
 
+## Pytorch实现
 
+### 文件夹命名："{}_{}".format(模型名, 数据名)
+
+* pytorch教程：http://pytorch123.com/
+
+* pytorch-handbook: https://github.com/zergtant/pytorch-handbook
+
+* pytorch-tutorial: https://github.com/yunjey/pytorch-tutorial

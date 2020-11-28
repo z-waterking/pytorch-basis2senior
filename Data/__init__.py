@@ -21,4 +21,3 @@ DataDirs = ['Criteo', 'Mnist', 'MovieLens']
 MainDirName = os.path.dirname(os.path.abspath(__file__))
 for data_dir in DataDirs:
     sys.path.append(os.path.join(MainDirName, data_dir) + '/')
-print(sys.path)
