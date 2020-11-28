@@ -7,6 +7,7 @@
 """
 from Data.DataAcquisition import DataAcquisition
 import numpy as np
+import pandas as pd
 import os
 import random
 import logging
@@ -26,17 +27,18 @@ class Mnist(DataAcquisition):
         self.Test_Label_FileName = "Mnist_Test_Label.csv"
 
         #File Objects
-        self.Train_Data_File = open(self.Train_Data_FileName, 'r', encoding = 'utf-8')
-        self.Train_Label_File = open(self.Train_Label_FileName, 'r', encoding = 'utf-8')
-        self.Test_Data_File = open(self.Test_Data_FileName, 'r', encoding = 'utf-8')
-        self.Test_Label_File = open(self.Test_Label_FileName, 'r', encoding = 'utf-8')
+        self.Train_Data_File = pd.read_csv(self.Train_Data_FileName, sep=',')
+        self.Train_Label_File = pd.read_csv(self.Train_Label_FileName)
+        self.Test_Data_File = pd.read_csv(self.Test_Data_FileName, sep=',')
+        self.Test_Label_File = pd.read_csv(self.Test_Label_FileName)
 
         #File Datas
         #Please read the original datas or README.md to understand the process.
-        self.Train_Data = [np.array(line.split(','), dtype = np.uint8) for line in self.Train_Data_File.readlines()]
-        self.Train_Label = [int(line.strip()) for line in self.Train_Label_File.readlines()]
-        self.Test_Data = [np.array(line.split(','), dtype = np.uint8) for line in self.Test_Data_File.readlines()]
-        self.Test_Label = [int(line.strip()) for line in self.Test_Label_File.readlines()]
+        LabelBase = [0] * 10
+        self.Train_Data = self.Train_Data_File.values.tolist()
+        self.Train_Label = self.Train_Label_File.values.tolist()
+        self.Test_Data = self.Test_Data_File.values.tolist()
+        self.Test_Label = self.Test_Label_File.values.tolist()
 
         #Shape of Train Datas
         self.Data_Shape_Length = 28
@@ -48,7 +50,7 @@ class Mnist(DataAcquisition):
     def GetAllTrainData(self):
         '''
         Return all Train_Data
-        :return: list[numpy.array()]
+        :return: generator[numpy.array()]
         '''
         return self.Train_Data
 
@@ -73,7 +75,7 @@ class Mnist(DataAcquisition):
         '''
         return self.Test_Label
 
-    def GetDataLength(self):
+    def DescribeDataLength(self):
         '''
         Describe the length of Train Data Set and Test Data Set
         :return:
@@ -123,7 +125,6 @@ class Mnist(DataAcquisition):
             Image.fromarray(Test_Data_Image).save('{}_{}.png'.format("TestData", Random_Test_Index))
 
 if __name__ == "__main__":
-    tm = Mnist()
-    tm.GetDataLength()
-    tm.CheckRandomData(True)
-    print(tm.Train_Data[-1])
+    mt = Mnist()
+    mt.DescribeDataLength()
+    mt.CheckRandomData(False)

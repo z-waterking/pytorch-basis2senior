@@ -3,7 +3,8 @@
 
 ## 说明
 
-本代码库所用的python版本为3.7
+本代码库所用的python版本为anaconda包中地3.6
+pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
 
 ## 什么是好代码？
 
@@ -80,6 +81,7 @@ pass
 通过此包将Data中提供的数据向模型中进行batch或stream方式地传递
 
 1. python生成器：https://www.cnblogs.com/liangmingshen/p/9706181.html
+2. yield用法：https://blog.csdn.net/mieleizhi0522/article/details/82142856
 ```
 
 
