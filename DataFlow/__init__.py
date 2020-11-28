@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-#
 '''
 @Project    :   DeepLearning
-@File       :   LR_Mnist.py
+@File       :   __init__.py.py
 @USER       :   ZZZZZ
-@TIME       :   2020/11/26 22:25
+@TIME       :   2020/11/28 12:42
 '''
-import torch

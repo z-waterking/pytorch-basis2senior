@@ -46,7 +46,7 @@ class Criteo(DataAcquisition):
         self.Test_Label = self.Test_Label_File.iloc[:, 0].values.tolist()
 
         #Notation
-        logging.info("Please call * GetFileLength() * method to get the length of datas")
+        logging.info("Please call * GetDataLength() * method to get the length of datas")
 
     def GetAllTrainData(self):
         '''
@@ -76,7 +76,7 @@ class Criteo(DataAcquisition):
         '''
         return self.Test_Label
 
-    def GetFileLength(self):
+    def GetDataLength(self):
         '''
         Describe the length of Train Data Set and Test Data Set
         :return:
@@ -112,5 +112,5 @@ class Criteo(DataAcquisition):
 
 if __name__ == "__main__":
     co = Criteo()
-    co.GetFileLength()
+    co.GetDataLength()
     co.CheckRandomData()

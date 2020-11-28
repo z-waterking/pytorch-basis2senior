@@ -43,7 +43,7 @@ class Mnist(DataAcquisition):
         self.Data_Shape_Wide = 28
 
         #Notation
-        logging.info("Please call * GetFileLength() * method to get the length of datas")
+        logging.info("Please call * GetDataLength() * method to get the length of datas")
 
     def GetAllTrainData(self):
         '''
@@ -73,7 +73,7 @@ class Mnist(DataAcquisition):
         '''
         return self.Test_Label
 
-    def GetFileLength(self):
+    def GetDataLength(self):
         '''
         Describe the length of Train Data Set and Test Data Set
         :return:
@@ -124,6 +124,6 @@ class Mnist(DataAcquisition):
 
 if __name__ == "__main__":
     tm = Mnist()
-    tm.GetFileLength()
+    tm.GetDataLength()
     tm.CheckRandomData(True)
     print(tm.Train_Data[-1])

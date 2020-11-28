@@ -32,7 +32,7 @@ class DataAcquisition(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def GetFileLength(self):
+    def GetDataLength(self):
         pass
 
     @abc.abstractmethod
