@@ -77,8 +77,14 @@ class DataBatchFlow():
         else:
            raise Exception("BatchSize Invalid!")
 
-        #ReCut the data
-        self.CutDataForGenerator()
+        '''
+        Do not Cut the Data if batchsize is 1
+        '''
+        if BatchSize == 1:
+            return
+        else:
+            #ReCut the data
+            self.CutDataForGenerator()
 
     def GetBatchSize(self):
         return self.BatchSize
@@ -124,8 +130,8 @@ if __name__ == "__main__":
     # #Test the SetBatchSize
 
     print('-----------------------------')
-    df.SetBatchSize(3)
+    df.SetBatchSize(5)
     dg = df.GetTestLabelBatch()
     TempData = next(dg)
-    print('set batch size as 3, a batch data len is {}, \nthe data is {}'.format(len(TempData), TempData))
+    print('A batch data len is {}, \nthe data is {}'.format(len(TempData), TempData))
     #Testing the DataFlow

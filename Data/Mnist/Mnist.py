@@ -101,6 +101,7 @@ class Mnist(DataAcquisition):
         Random_Train_Index = random.randint(0, len(self.Train_Label))
         Random_Test_Index = random.randint(0, len(self.Test_Label))
 
+        #Select a index which you need to verify
         if AssignedIndex != None:
             Random_Train_Index = AssignedIndex
             Random_Test_Index = AssignedIndex

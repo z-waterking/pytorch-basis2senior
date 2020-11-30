@@ -32,9 +32,9 @@ class Criteo(DataAcquisition):
         self.Test_Label_FileName = os.path.join(self.Current_Path, "Criteo_Test_Label.csv")
 
         #Data Columns
-        self.DataNumColumns = ['i{}'.format(index) for index in range(1, 14)]
-        self.DataCateColumns = ['c{}'.format(index) for index in range(1, 27)]
-        self.DataColumns = self.DataNumColumns + self.DataCateColumns
+        self.Data_Num_Columns = ['i{}'.format(index) for index in range(1, 14)]
+        self.Data_Cate_Columns = ['c{}'.format(index) for index in range(1, 27)]
+        self.Data_Columns = self.Data_Num_Columns + self.Data_Cate_Columns
 
         #File Objects
         self.Train_Data_File = pd.read_csv(self.Train_Data_FileName, sep = ',', header = None)
