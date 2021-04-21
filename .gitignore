@@ -1,4 +1,4 @@
-.pth
+*.pth
 FashionMNIST
 MNIST
 .DS_Store
