@@ -1,4 +1,8 @@
+.pth
+FashionMNIST
+MNIST
 .DS_Store
+
 # idea config
 .idea/
 # Byte-compiled / optimized / DLL files
