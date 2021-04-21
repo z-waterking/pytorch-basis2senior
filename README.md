@@ -35,7 +35,7 @@ pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
 
 3. __init__.py的作用：https://www.cnblogs.com/tp1226/p/8453854.html
 
-## Criteo
+## 1. Criteo
 
 ```
 # Criteo数据集-(nums, category) : label
@@ -47,7 +47,7 @@ pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
     c 代表ID类型的特征
 ```
 
-## Mnist
+## 2. Mnist
 
 ```
 # MINST-纯分类数据-(nums) : label
@@ -69,19 +69,20 @@ pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
     4. Mnist_Test_Label.csv
 ```
 
-## MovieLens
+## 3. MovieLens
 
 pass
 
 # DataAnalysis
 
-```
-进行各式各样的数据分析代码编写
+## 1. Pandas对数据进行分析
 
-1. pandas对数据进行分析
 
-2. matplotlib对数据进行展示
-```
+
+## 2. Matplotlib对分析结果进行展示
+
+
+## 3. PyEcharts对分析结果进行展示
 
 # DataFlow
 
@@ -97,7 +98,7 @@ pass
 
 # Pytorch
 
-## 文件夹命名："{} / {}_{}".format(模型名, 模型名, 数据名)
+**文件夹命名："{} / {}_{}".format(模型名, 模型名, 数据名)**
 
 * pytorch教程：http://pytorch123.com/
 
