@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 # 导入必要的包
 import torch
 from torch.autograd import Variable
@@ -79,10 +82,6 @@ print("预测的常数项是：" , parameters["b"])
 # 当然nn包中还包含了大部分我们平时使用的损失函数。
 # 最后torch.optim中还含有很多我们平时使用的优化算法，用来更新梯度。（我们上面使用的就是梯度下降法，只不过上面是我们自己手写，现在可以直接调用了）
 # 刚才，我们使用的是Tensor和autograd来构建线性回归的模型，现在，我们来使用torch.nn来快速构建一个线性回归模型
-
-
-
-
 
 # 还是使用上述的X和Y
 

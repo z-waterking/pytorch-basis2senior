@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 # 参数初始化
 class LeNet5(nn.Module):
@@ -106,8 +107,8 @@ transform = transforms.Compose([
 ])
 
 # 加载数据
-train_data = datasets.CIFAR10('./data', train=True, transform=transform, download=True)
-test_data = datasets.CIFAR10('./data', train=False, transform=transform, download=False)
+train_data = datasets.CIFAR10('../DataSet', train=True, transform=transform, download=True)
+test_data = datasets.CIFAR10('../DataSet', train=False, transform=transform, download=False)
 
 train_data_loader = DataLoader(train_data, batch_size=256, shuffle=True)
 test_data_loader = DataLoader(test_data, batch_size=256, shuffle=True)

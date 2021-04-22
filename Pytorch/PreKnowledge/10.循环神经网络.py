@@ -3,12 +3,12 @@ import torch.nn as nn
 from torch.nn import functional as F
 from torch.autograd import Variable
 import numpy as np
-
+import random
 
 # 构建 config 类来 控制所有参数
 class Config(object):
     def __init__(self):
-        self.path = '../dataSet/dinos.txt'
+        self.path = '../DataSet/dinos.txt'
         self.data_size = None
         self.vocab_size = None
         self.char_to_ix = None
@@ -147,7 +147,7 @@ for i in range(config.epoch):
         y_pred = dinos(input_data, h0)
         # 求 loss
         loss = loss_fn(y_pred, target_data)
-        total_loss.append(loss.data[0])
+        total_loss.append(loss.data.item())
         # 反向传播
         loss.backward()
         # 梯度剪裁同时更新模型

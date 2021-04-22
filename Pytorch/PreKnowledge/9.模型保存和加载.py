@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 class LeNet5(nn.Module):
     def __init__(self, in_dim, n_class):
@@ -13,9 +14,9 @@ class LeNet5(nn.Module):
         # 参数初始化函数
         for p in self.modules():
             if isinstance(p, nn.Conv2d):
-                nn.init.xavier_normal(p.weight.data)
+                nn.init.xavier_normal_(p.weight.data)
             elif isinstance(p, nn.Linear):
-                nn.init.normal(p.weight.data)
+                nn.init.normal_(p.weight.data)
 
     # 向前传播
     def forward(self, x):

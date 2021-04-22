@@ -65,14 +65,13 @@ batch_size = 128
 DOWNLOAD = False 
 
 train_dataset = datasets.MNIST(
-    root='./data', train=True, transform=transforms.ToTensor(), download=DOWNLOAD)
+    root='../DataSet', train=True, transform=transforms.ToTensor(), download=DOWNLOAD)
 
 test_dataset = datasets.MNIST(
-    root='./data', train=False, transform=transforms.ToTensor())
+    root='../DataSet', train=False, transform=transforms.ToTensor())
 
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-
 
 # 现在，我们有了模型，也有了数据集，就让我们开始进行测试
 
@@ -100,11 +99,11 @@ for epoch in range(num_epoches):
         # 向前传播
         out = leNet(img)
         loss = criterion(out, label)
-        running_loss += loss.data[0] * label.size(0)
+        running_loss += loss.data.item() * label.size(0)
         _, pred = torch.max(out, 1)
         num_correct = (pred == label).sum()
         accuracy = (pred == label).float().mean()
-        running_acc += num_correct.data[0]
+        running_acc += num_correct.data.item()
         # 向后传播
         optimizer.zero_grad()
         loss.backward()

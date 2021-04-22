@@ -20,11 +20,9 @@
 
 # 不需要， Pytorch 的层是可以随意替换的！！！我们随时可以增加，修改。
 
-
-
-
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 class LeNet5(nn.Module):
     def __init__(self, in_dim, n_class):
@@ -38,9 +36,9 @@ class LeNet5(nn.Module):
         # 参数初始化函数
         for p in self.modules():
             if isinstance(p, nn.Conv2d):
-                nn.init.xavier_normal(p.weight.data)
+                nn.init.xavier_normal_(p.weight.data)
             elif isinstance(p, nn.Linear):
-                nn.init.normal(p.weight.data)
+                nn.init.normal_(p.weight.data)
 
     # 向前传播
     def forward(self, x):
@@ -58,9 +56,6 @@ class LeNet5(nn.Module):
         for s in size:
             num_features *= s
         return num_features
-
-
-
 import re
 
 # 实例化 LeNet
@@ -76,9 +71,6 @@ for name, module in lenet.named_children():
 # 获取了所有带 "conv" 层的名字了，现在开始删除
 for name in del_list:
     delattr(lenet, name)
-
-
-
 
 # print(lenet) 得到的结果如下所示
 
@@ -127,13 +119,7 @@ for name in del_list:
 
 # 某一天，我们突然发现了 AvgPool 的效果比 Maxpool 要好，于是我们想要改变把 AlextNet中的所有 Maxpool 用 AvgPool来代替该怎么办呢？
 
-# > 查看 Alexnet 模型中的 Maxpool 的位置，我们可以清晰的发现 Maxpool 处于 features 下面的 (2)、(5)、(12)的位置上
-
-
-# 于是，我们改变 features 层下面的 (2)、(5)、(12) 就行了，具体操作如下所示
-
-
-
+# > 查看 Alexnet 模型中的 Maxpool 的位置，我们可以清晰的发现 Maxpool 处于 features 下面的 (2)、(5)、(12)的位置上# 于是，我们改变 features 层下面的 (2)、(5)、(12) 就行了，具体操作如下所示
 
 from torchvision import models, transforms, datasets
 from torch.utils.data import Dataset, DataLoader
@@ -142,11 +128,7 @@ import torch
 from torch.autograd import Variable
 import torch.optim as optim
 
-
-alexnet = models.alexnet(pretrained=False)
-
-
-# 改变前的 alexnet
+alexnet = models.alexnet(pretrained=False)# 改变前的 alexnet
 print(alexnet)
 
 # 开始改变

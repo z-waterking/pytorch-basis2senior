@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 # 把必要的包给导入
 import torch
 from torch.autograd import Variable
@@ -17,7 +20,6 @@ print(y1)
 y1.backward() # 自动求导
 
 x1.grad # 查看梯度
-
 
 # 通过调用 backward() 函数，我们自动求出了在 x = 1 的时候的导数
 # 需要注意的一点是：如果我们输入的 Tensor 不是一个标量，而是矢量（多个值）。

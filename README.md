@@ -3,6 +3,7 @@
 ## 说明
 
 本代码库所用的python版本为Anaconda包中的3.6
+
 pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
 
 ## 什么是好代码？
@@ -30,6 +31,8 @@ pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
 
 ## 1. Pytorch基础
 
+基础部分做一个参考。随着Pytorch版本的提升，许多方法、变量都会废弃，
+
 | Content    | .ipynb 文件  |  .py 文件 |
 | ------------------ | :---------------------: | :--------------------------: |
 | 1.Tensor基础 |  [Tensor基础.ipynb](./Pytorch/PreKnowledge/1.Tensor基础.ipynb) | [Tensor基础.py](./Pytorch/PreKnowledge/1.Tensor基础.py) |
@@ -51,9 +54,6 @@ pytorch环境为1.5.1: https://pytorch.org/get-started/previous-versions/
 
 * pytorch-tutorial: https://github.com/yunjey/pytorch-tutorial
 
+* 简单粗暴Tensorflow：https://tf.wiki/zh_hans
 
-```
-学习资料
-1. 简单粗暴Tensorflow：https://tf.wiki/zh_hans
-2. 动手学深度学习：https://zh.d2l.ai/index.html
-```
+* 动手学深度学习：https://zh.d2l.ai/index.html
