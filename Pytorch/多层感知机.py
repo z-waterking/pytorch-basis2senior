@@ -81,6 +81,7 @@ optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 def train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     for batch, (X, y) in enumerate(dataloader):
+        # 显式地将tensor移到cuda上
         X, y = X.to(device), y.to(device)
 
         # Compute prediction error
@@ -98,6 +99,7 @@ def train(dataloader, model, loss_fn, optimizer):
 
         # 输出log
         if batch % 100 == 0:
+            # .item() <-> 将tensor转为python变量
             loss, current = loss.item(), batch * len(X)
             print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
 
