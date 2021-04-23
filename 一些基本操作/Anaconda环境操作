@@ -1,0 +1,25 @@
+查看conda的py环境
+conda info -e
+
+# 创建一个名为python34的环境，指定Python版本是3.4（创建py27操作一样）
+conda create -n py34 python=3.4
+
+#删除conda环境
+
+conda remove -n  环境名
+
+
+# 安装好后，使用activate激活某个环境
+source activate python34
+
+# 激活后，会发现terminal输入的地方多了python34的字样
+
+# 此时，再次输入
+python --version
+
+# 如果想返回默认的python 2.7环境，运行
+source deactivate python34 # for Linux & Mac
+
+
+# 删除一个已有的环境
+conda remove --name python34 --all
